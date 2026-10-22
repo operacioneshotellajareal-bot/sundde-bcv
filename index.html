@@ -3,29 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarifario Oficial - Hotel Laja City</title>
+    <title>Hablador Oficial - Hotel Laja City</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Arial', sans-serif; }
         body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f0f2f5; padding: 20px; }
         
-        /* Contenedor optimizado para visualización en tablet vertical */
+        /* Contenedor oficial para visualización vertical en tablet */
         .plantilla-sundde {
-            width: 620px; min-height: 900px; background: white; padding: 35px;
+            width: 620px; min-height: 940px; background: white; padding: 35px;
             border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             display: flex; flex-direction: column; justify-content: space-between; position: relative;
         }
         
+        /* Logotipo centrado del hotel (Identificador del comercio) */
         .contenedor-logo-hotel {
             display: flex; justify-content: center; align-items: center; width: 100%;
-            border-bottom: 2px solid #f1a80a; padding-bottom: 8px; margin-bottom: 12px;
+            border-bottom: 2px solid #f1a80a; padding-bottom: 8px; margin-bottom: 15px;
         }
-        .img-logo-hotel { height: 90px; width: auto; object-fit: contain; }
+        .img-logo-hotel { height: 75px; width: auto; object-fit: contain; }
         
-        .texto-legal { font-size: 11px; text-align: center; color: #333; font-weight: bold; line-height: 1.4; margin-bottom: 15px; }
+        /* Cabecera Oficial Normativa: Logos horizontales superiores alineados */
+        .encabezado-logos-oficiales {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+            height: 70px;
+        }
+        .logo-normativo-sundde { height: 65px; width: auto; object-fit: contain; }
+        .logo-normativo-bcv { height: 65px; width: auto; object-fit: contain; }
         
-        .seccion-titulo { font-size: 16px; font-weight: 900; color: #002855; text-align: center; margin-bottom: 8px; letter-spacing: 0.5px; }
+        .texto-legal { font-size: 12px; text-align: center; color: #222; font-weight: bold; line-height: 1.4; margin-bottom: 20px; }
         
-        /* Estilos de las tablas */
+        .seccion-titulo { font-size: 15px; font-weight: 900; color: #002855; text-align: center; margin-bottom: 8px; letter-spacing: 0.5px; }
+        
+        /* Estilos de las tablas informativas */
         .tabla-general { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
         .tabla-general th { background-color: #f4f6f9; border: 2px solid #002855; padding: 10px; font-size: 13px; font-weight: 900; color: #002855; text-align: center; }
         .tabla-general td { border: 2px solid #002855; height: 50px; padding: 0 15px; font-size: 14px; font-weight: bold; color: #002855; vertical-align: middle; }
@@ -40,16 +53,23 @@
 <body>
 
     <div class="plantilla-sundde">
-        <!-- Encabezado del Hotel Laja City -->
+        <!-- Identificación del Comercio (Tu Hotel) -->
         <div class="contenedor-logo-hotel">
             <img class="img-logo-hotel" src="logo-hotel.png" alt="Hotel Laja City">
         </div>
+
+        <!-- Fila superior bajo formato normativo real (SUNDDE izquierda, BCV derecha) -->
+        <div class="encabezado-logos-oficiales">
+            <img class="logo-normativo-sundde" src="sundde.png" alt="SUNDDE Oficial">
+            <img class="logo-normativo-bcv" src="bcv.png" alt="BCV Oficial">
+        </div>
         
+        <!-- Texto legal obligatorio de la Ley Orgánica de Precios Justos -->
         <p class="texto-legal">
             "Quienes omitan la colocación de avisos o carteles habladores que exijan en materia de administración cambiaria, estarán incurriendo en infracciones por Incumplimiento de Formalidades establecidas en el Artículo 46 numeral 5 de la LEY ORGÁNICA DE PRECIOS JUSTOS"
         </p>
         
-        <!-- Bloque 1: Tasas Oficiales del BCV -->
+        <!-- Bloque 1: Tasas del BCV -->
         <div class="seccion-titulo">INDICADORES CAMBIARIOS BCV</div>
         <table class="tabla-general">
             <tr>
@@ -66,7 +86,7 @@
             </tr>
         </table>
 
-        <!-- Bloque 2: Tarifario de Habitaciones con Conversión Automática -->
+        <!-- Bloque 2: Tarifario de Habitaciones con Conversión Dinámica -->
         <div class="seccion-titulo">TARIFA DE HABITACIÓN</div>
         <table class="tabla-general">
             <thead>
@@ -109,7 +129,7 @@
     </div>
 
     <script>
-        // Precios base de referencia en dólares según la imagen del hotel
+        // Tarifas base del hotel en dólares tomadas de la orden oficial
         const tarifasUSD = {
             matrimonial: 60,
             dobleInd: 65,
@@ -119,10 +139,8 @@
         };
 
         function calcularTarifasLocales(tasaDolar) {
-            // Formateador numérico de moneda nacional (coma para decimales y punto para miles)
             const formatearMoneda = (valor) => valor.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-            // Inyección automática en la nueva tabla
             document.getElementById('calc-matrimonial').innerText = formatearMoneda(tarifasUSD.matrimonial * tasaDolar);
             document.getElementById('calc-doble-ind').innerText = formatearMoneda(tarifasUSD.dobleInd * tasaDolar);
             document.getElementById('calc-doble-mat').innerText = formatearMoneda(tarifasUSD.dobleMat * tasaDolar);
@@ -138,32 +156,28 @@
                 
                 if(datos && datos.rates && datos.rates.USD && datos.rates.EUR) {
                     const usd = datos.rates.USD;
-                    const定位eur = datos.rates.EUR;
+                    const eur = datos.rates.EUR;
                     
                     document.getElementById('tasa-usd').innerText = usd.toFixed(2).replace('.', ',');
-                    document.getElementById('tasa-eur').innerText =定位eur.toFixed(2).replace('.', ',');
+                    document.getElementById('tasa-eur').innerText = eur.toFixed(2).replace('.', ',');
                     document.getElementById('fecha-bcv').innerText = new Date(datos.date).toLocaleDateString('es-VE');
                     
-                    // Ejecuta el cálculo automático con la tasa en vivo
                     calcularTarifasLocales(usd);
                     return;
                 }
                 throw new Error();
             } catch (error) {
                 console.error("Modo resguardo activo");
-                // Tasas oficiales exactas del BCV de hoy en caso de fallas de red
                 const tasaResguardo = 884.75;
                 document.getElementById('tasa-usd').innerText = "884,75";
                 document.getElementById('tasa-eur').innerText = "993,21";
                 document.getElementById('fecha-bcv').innerText = new Date().toLocaleDateString('es-VE');
                 
-                // Ejecuta el cálculo automático con la tasa de resguardo del día
                 calcularTarifasLocales(tasaResguardo);
             }
         }
 
         conectarBCVReal();
-        // Ciclo automático de refresco independiente cada 2 horas
         setInterval(conectarBCVReal, 2 * 60 * 60 * 1000);
     </script>
 </body>
