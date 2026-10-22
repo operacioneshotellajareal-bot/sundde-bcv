@@ -9,18 +9,27 @@
         body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f0f2f5; }
         
         .plantilla-sundde {
-            width: 580px; height: 720px; background: white; padding: 40px;
+            width: 580px; height: 750px; background: white; padding: 40px;
             border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             display: flex; flex-direction: column; justify-content: space-between; position: relative;
         }
         
-        .nombre-hotel {
-            text-align: center; font-size: 26px; font-weight: 900; color: #002855;
-            text-transform: uppercase; border-bottom: 2px solid #f1a80a;
-            padding-bottom: 12px; margin-bottom: 10px; letter-spacing: 1.5px;
+        /* Contenedor optimizado y centrado para el logotipo oficial de tu hotel */
+        .contenedor-logo-hotel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            border-bottom: 2px solid #f1a80a;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+        }
+        .img-logo-hotel {
+            height: 85px;
+            width: auto;
+            object-fit: contain;
         }
         
-        /* Contenedor adaptado para tus dos imágenes locales reales */
         .encabezado-logos { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; height: 65px; }
         .logo-sundde-img { height: 60px; width: auto; object-fit: contain; }
         .logo-bcv-img { height: 60px; width: auto; object-fit: contain; }
@@ -46,9 +55,11 @@
 <body>
 
     <div class="plantilla-sundde">
-        <div class="nombre-hotel">Hotel Laja City</div>
+        <!-- Reemplazo del título de texto por la imagen real de la marca de tu hotel -->
+        <div class="contenedor-logo-hotel">
+            <img class="img-logo-hotel" src="logo-hotel.png" alt="Hotel Laja City">
+        </div>
 
-        <!-- El archivo ahora lee directamente las dos imágenes que descargaste en la carpeta -->
         <div class="encabezado-logos">
             <img class="logo-sundde-img" src="sundde.png" alt="SUNDDE Oficial">
             <img class="logo-bcv-img" src="bcv.png" alt="BCV Oficial">
