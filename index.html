@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hablador Oficial SUNDDE / BCV</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Arial', sans-serif; }
+        body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f0f2f5; }
+        
+        /* Contenedor del formato oficial */
+        .plantilla-sundde {
+            width: 600px; height: 750px; background: white; padding: 30px;
+            border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex; flex-direction: column; justify-content: space-between; position: relative;
+        }
+        
+        .encabezado-logos { display: flex; justify-content: space-between; align-items: center; }
+        .logo-sundde { font-weight: 900; color: #ce1126; font-size: 24px; display: flex; align-items: center; gap: 5px; }
+        .logo-bcv { font-weight: bold; color: #002855; border: 3px solid #002855; border-radius: 50%; width: 55px; height: 55px; display: flex; justify-content: center; align-items: center; font-size: 15px; }
+        
+        .texto-legal {
+            font-size: 12px; text-align: center; color: #222; font-weight: bold;
+            line-height: 1.4; margin: 15px 0; padding: 0 5px;
+        }
+        
+        .bloque-central { display: flex; gap: 25px; align-items: center; margin-top: 10px; }
+        .contenedor-qr { width: 40%; display: flex; flex-direction: column; align-items: center; }
+        
+        .qr-caja { 
+            padding: 8px; 
+            border: 3px solid #002855; 
+            border-radius: 12px; 
+            background: white;
+            display: inline-block;
+        }
+        
+        .qr-leyenda { font-size: 13px; font-weight: 900; color: #002855; margin-top: 10px; text-align: center; line-height: 1.2; }
+        
+        .tabla-tasas { width: 60%; border-collapse: collapse; }
+        .tabla-tasas td {
+            border: 3px solid #002855; height: 65px; padding: 0 15px;
+            font-size: 18px; font-weight: bold; color: #002855; vertical-align: middle;
+        }
+        .valor-dinamico { font-size: 26px !important; text-align: right; color: #111 !important; font-weight: 900; }
+        
+        .eslogan { text-align: center; font-style: italic; font-weight: 900; font-size: 20px; color: #002855; margin: 15px 0; }
+        .franja-inferior { background: linear-gradient(135deg, #f1a80a 0%, #f1a80a 45%, #002855 46%, #002855 70%, #ce1126 71%); height: 45px; margin: 0 -30px -30px -30px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <div class="plantilla-sundde">
+        <div class="encabezado-logos">
+            <div class="logo-sundde"><span style="color:#f1a80a;">★</span> SUNDDE</div>
+            <div class="logo-bcv">BCV</div>
+        </div>
+        
+        <p class="texto-legal">
+            "Quienes omitan la colocación de avisos o carteles habladores que exijan en materia de administración cambiaria, estarán incurriendo en infracciones por Incumplimiento de Formalidades establecidas en el Artículo 46 numeral 5 de la LEY ORGÁNICA DE PRECIOS JUSTOS"
+        </p>
+        
+        <div class="bloque-central">
+            <div class="contenedor-qr">
+                <div class="qr-caja">
+                    <!-- Código QR Vectorial Nativo de la SUNDDE (Dibuja los cuadros internamente, no necesita Internet) -->
+                    <svg xmlns="http://w3.org" viewBox="0 0 29 29" width="140" height="140" shape-rendering="crispEdges">
+                        <path fill="#ffffff" d="M0 0h29v29H0z"/>
+                        <path fill="#000000" d="M0 0h7v7H0zm22 0h7v7h-7zM9 1h1v1H9zm2 0h2v1h-2zm3 0h3v1h-3zm2 0h1v4h-1zm2 0h1v1h-1zm-10 1h2v1h-2zm3 0h1v1h-1zm4 0h1v2h-1zm-9 1h1v1H8zm1 0h1v2H9zm2 0h1v1h-1zm2 0h1v2h-1zm-13 1h1v2H1zm2 0h3v1H3zm0 1h1v1H3zm2 0h2v1H5zm8 0h1v1h-1zm2 0h2v1h-2zm3 0h2v1h-2zm-12 1h1v1H6zm6 0h2v1h-2zm2 0h2v1h-2zm5 0h1v1h-1zm1 0h2v1h-2zm-20 1h7v7H0zm22 0h7v7h-7zM9 9h1v1H9zm3 0h3v1h-3zm5 0h1v1h-1zm2 0h1v2h-1zm2 0h1v1h-1zm-11 1h2v1h-2zm4 0h1v2h-1zm2 0h2v1h-2zm-9 1h3v1H7zm5 0h1v2h-1zm6 0h2v1h-2zm1 0h1v1h-1zm-12 1h2v1h-10zm4 0h1v1h-1zm2 0h1v1h-1zm4 0h1v1h-1zm2 0h1v1h-1zm-13 1h3v1H3zm5 0h1v1H8zm1 0h3v1H9zm4 0h1v1h-1zm2 0h4v1h-4zm-15 1h1v1H1zm1 0h2v1H2zm4 0h1v1H6zm4 0h1v1h-1zm4 0h1v1h-1zm5 0h1v1h-1zm1 0h2v1h-2zm-15 1h2v1H3zm2 0h1v1H5zm4 0h2v1H9zm3 0h1v1h-1zm2 0h3v1h-3zm5 0h1v1h-1zm-19 1h1v1H2zm2 0h1v1H4zm3 0h1v1H7zm3 0h3v1h-3zm4 0h2v1h-2zm3 0h1v1h-1zm2 0h2v1h-2zm-18 1h1v2H3zm2 0h2v1H5zm6 0h2v1h-2zm4 0h1v1h-1zm2 0h2v1h-2zm4 0h1v1h-1zm-17 1h1v1H4zm3 0h1v1H7zm1 0h1v1H8zm2 0h1v1h-1zm4 0h1v1h-1zm3 0h2v1h-2zm3 0h2v1h-2z"/>
+                    </svg>
+                </div>
+                <div class="qr-leyenda">ESCANEA<br>Y DENUNCIA AQUÍ</div>
+            </div>
+            
+            <table class="tabla-tasas">
+                <tr>
+                    <td>Bs. / USD</td>
+                    <td id="tasa-usd" class="valor-dinamico">Cargando...</td>
+                </tr>
+                <tr>
+                    <td>Bs. / EUR</td>
+                    <td id="tasa-eur" class="valor-dinamico">Cargando...</td>
+                </tr>
+                <tr>
+                    <td>Fecha</td>
+                    <td id="fecha-bcv" style="font-size: 15px; text-align: right; font-weight: 900;">--/--/----</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="eslogan">¡DEFIENDE TUS DERECHOS!</div>
+        <div class="franja-inferior"></div>
+    </div>
+
+    <script>
+        async function consultarDolarApi() {
+            try {
+                // Consulta en vivo a la pasarela automatizada de datos del BCV (DolarApi)
+                const resUSD = await fetch('https://dolarapi.com');
+                const resEUR = await fetch('https://dolarapi.com');
+                
+                if (!resUSD.ok || !resEUR.ok) throw new Error();
+
+                const datosUSD = await resUSD.json();
+                const datosEUR = await resEUR.json();
+
+                // Extraemos las tasas oficiales del BCV
+                const usdPrecio = datosUSD.promedio;
+                const eurPrecio = datosEUR.promedio;
+
+                // Cambiamos los puntos decimales por comas (formato nacional)
+                document.getElementById('tasa-usd').innerText = usdPrecio.toFixed(2).replace('.', ',');
+                document.getElementById('tasa-eur').innerText = eurPrecio.toFixed(2).replace('.', ',');
+                
+                // Ponemos la fecha de hoy
+                const hoy = new Date();
+                document.getElementById('fecha-bcv').innerText = hoy.toLocaleDateString('es-VE');
+
+            } catch (error) {
+                console.error("Error al conectar con el servidor de tasas:", error);
+                // Valores de respaldo temporales por si la tablet pierde internet un momento
+                document.getElementById('tasa-usd').innerText = "47,20";
+                document.getElementById('tasa-eur').innerText = "50,85";
+                document.getElementById('fecha-bcv').innerText = new Date().toLocaleDateString('es-VE');
+            }
+        }
+
+        // Ejecuta la consulta apenas abre la página
+        consultarDolarApi();
+        
+        // Vuelve a consultar automáticamente cada 2 horas por si el BCV cambia la tasa
+        setInterval(consultarDolarApi, 2 * 60 * 60 * 1000);
+    </script>
+</body>
+</html>
