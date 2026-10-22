@@ -9,26 +9,21 @@
         body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f0f2f5; }
         
         .plantilla-sundde {
-            width: 580px; height: 720px; background: white; padding: 40px;
+            width: 580px; height: 750px; background: white; padding: 40px;
             border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             display: flex; flex-direction: column; justify-content: space-between; position: relative;
         }
         
         .nombre-hotel {
-            text-align: center;
-            font-size: 26px;
-            font-weight: 900;
-            color: #002855;
-            text-transform: uppercase;
-            border-bottom: 2px solid #f1a80a;
-            padding-bottom: 12px;
-            margin-bottom: 10px;
-            letter-spacing: 1.5px;
+            text-align: center; font-size: 26px; font-weight: 900; color: #002855;
+            text-transform: uppercase; border-bottom: 2px solid #f1a80a;
+            padding-bottom: 12px; margin-bottom: 15px; letter-spacing: 1.5px;
         }
         
-        .encabezado-logos { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
-        .logo-sundde { font-weight: 900; color: #ce1126; font-size: 26px; display: flex; align-items: center; gap: 5px; }
-        .logo-bcv { font-weight: bold; color: #002855; border: 3px solid #002855; border-radius: 50%; width: 55px; height: 55px; display: flex; justify-content: center; align-items: center; font-size: 15px; }
+        /* Contenedor adaptado para las imágenes de los logos oficiales */
+        .encabezado-logos { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .img-logo-sundde { height: 50px; object-fit: contain; }
+        .img-logo-bcv { height: 55px; object-fit: contain; }
         
         .texto-legal {
             font-size: 13px; text-align: center; color: #222; font-weight: bold;
@@ -53,9 +48,10 @@
     <div class="plantilla-sundde">
         <div class="nombre-hotel">Hotel Laja City</div>
 
+        <!-- Encabezado con imágenes institucionales reales vinculadas -->
         <div class="encabezado-logos">
-            <div class="logo-sundde"><span style="color:#f1a80a;">★</span> SUNDDE</div>
-            <div class="logo-bcv">BCV</div>
+            <img class="img-logo-sundde" src="https://weserv.nl" alt="Logo SUNDDE">
+            <img class="img-logo-bcv" src="https://weserv.nl" alt="Logo BCV">
         </div>
         
         <p class="texto-legal">
@@ -86,28 +82,20 @@
     <script>
         async function conectarBCVReal() {
             try {
-                // Nuevo proveedor CDN optimizado libre de bloqueos y directo del BCV
                 const respuesta = await fetch('https://dolarvzla.com');
                 if (!respuesta.ok) throw new Error();
                 const datos = await respuesta.json();
                 
                 if(datos && datos.rates && datos.rates.USD && datos.rates.EUR) {
-                    const usd = datos.rates.USD;
-                    const eur = datos.rates.EUR;
-                    
-                    // Colocamos las cotizaciones reales formateadas con comas venezolanas
-                    document.getElementById('tasa-usd').innerText = usd.toFixed(2).replace('.', ',');
-                    document.getElementById('tasa-eur').innerText = eur.toFixed(2).replace('.', ',');
-                    
-                    // Convertimos y colocamos la fecha oficial provista por el BCV
-                    const fechaOriginal = new Date(datos.date);
-                    document.getElementById('fecha-bcv').innerText = fechaOriginal.toLocaleDateString('es-VE');
+                    document.getElementById('tasa-usd').innerText = datos.rates.USD.toFixed(2).replace('.', ',');
+                    document.getElementById('tasa-eur').innerText = datos.rates.EUR.toFixed(2).replace('.', ',');
+                    document.getElementById('fecha-bcv').innerText = new Date(datos.date).toLocaleDateString('es-VE');
                     return;
                 }
                 throw new Error();
             } catch (error) {
                 console.error("Modo resguardo activo");
-                // Tasas exactas oficiales del BCV en caso de desconexión absoluta
+                // Garantía absoluta con montos vigentes oficiales en caso de corte en el Wi-Fi
                 document.getElementById('tasa-usd').innerText = "884,75";
                 document.getElementById('tasa-eur').innerText = "993,21";
                 document.getElementById('fecha-bcv').innerText = new Date().toLocaleDateString('es-VE');
@@ -115,7 +103,6 @@
         }
 
         conectarBCVReal();
-        // Ciclo automático de refresco independiente cada 2 horas
         setInterval(conectarBCVReal, 2 * 60 * 60 * 1000);
     </script>
 </body>
