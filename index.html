@@ -8,24 +8,23 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Arial', sans-serif; }
         body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f0f2f5; }
         
-        /* Contenedor del formato oficial adaptado para tablet */
         .plantilla-sundde {
             width: 580px; height: 720px; background: white; padding: 40px;
             border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             display: flex; flex-direction: column; justify-content: space-between; position: relative;
         }
         
-        /* Estilo elegante para el nombre del hotel */
+        /* Encabezado limpio y minimalista con el nombre de tu hotel */
         .nombre-hotel {
             text-align: center;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 900;
             color: #002855;
             text-transform: uppercase;
             border-bottom: 2px solid #f1a80a;
             padding-bottom: 12px;
             margin-bottom: 10px;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
         
         .encabezado-logos { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
@@ -53,7 +52,7 @@
 <body>
 
     <div class="plantilla-sundde">
-        <!-- Nombre de tu Empresa destacado en la cabecera -->
+        <!-- Encabezado simplificado del hotel -->
         <div class="nombre-hotel">Hotel Laja City</div>
 
         <div class="encabezado-logos">
@@ -89,7 +88,6 @@
     <script>
         async function sincronizarTasasOficiales() {
             try {
-                // Consulta en vivo a los servidores de datos económicos nacionales
                 const respuestaUSD = await fetch('https://dolarapi.com');
                 const respuestaEUR = await fetch('https://dolarapi.com');
                 
@@ -98,7 +96,6 @@
                 const datosUSD = await respuestaUSD.json();
                 const datosEUR = await respuestaEUR.json();
 
-                // Extraemos las cotizaciones vigentes en las mesas de cambio del BCV
                 const usdReal = datosUSD.promedio;
                 const eurReal = datosEUR.promedio;
 
@@ -107,8 +104,7 @@
                 document.getElementById('fecha-bcv').innerText = new Date().toLocaleDateString('es-VE');
                 return;
             } catch (error) {
-                console.error("Activando tasas de resguardo oficiales...");
-                // Valores de contingencia configurados exactamente con las tasas oficiales del BCV de hoy en caso de fallos de Wi-Fi
+                console.error("Tasas en modo seguro...");
                 document.getElementById('tasa-usd').innerText = "47,25";
                 document.getElementById('tasa-eur').innerText = "50,88";
                 document.getElementById('fecha-bcv').innerText = new Date().toLocaleDateString('es-VE');
@@ -116,8 +112,8 @@
         }
 
         sincronizarTasasOficiales();
-        // Verificación y actualización automática silenciosa cada 2 horas
         setInterval(sincronizarTasasOficiales, 2 * 60 * 60 * 1000);
     </script>
 </body>
 </html>
+
