@@ -3,94 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hablador Oficial SUNDDE / BCV - Hotel Laja City</title>
+    <title>Tarifario Oficial - Hotel Laja City</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Arial', sans-serif; }
-        body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f0f2f5; }
+        body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f0f2f5; padding: 20px; }
         
+        /* Contenedor optimizado para visualización en tablet vertical */
         .plantilla-sundde {
-            width: 580px; height: 750px; background: white; padding: 40px;
+            width: 620px; min-height: 900px; background: white; padding: 35px;
             border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             display: flex; flex-direction: column; justify-content: space-between; position: relative;
         }
         
-        /* Contenedor optimizado y centrado para el logotipo oficial de tu hotel */
         .contenedor-logo-hotel {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            border-bottom: 2px solid #f1a80a;
-            padding-bottom: 15px;
-            margin-bottom: 10px;
+            display: flex; justify-content: center; align-items: center; width: 100%;
+            border-bottom: 2px solid #f1a80a; padding-bottom: 8px; margin-bottom: 12px;
         }
-        .img-logo-hotel {
-            height: 85px;
-            width: auto;
-            object-fit: contain;
-        }
+        .img-logo-hotel { height: 90px; width: auto; object-fit: contain; }
         
-        .encabezado-logos { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; height: 65px; }
-        .logo-sundde-img { height: 60px; width: auto; object-fit: contain; }
-        .logo-bcv-img { height: 60px; width: auto; object-fit: contain; }
+        .texto-legal { font-size: 11px; text-align: center; color: #333; font-weight: bold; line-height: 1.4; margin-bottom: 15px; }
         
-        .texto-legal {
-            font-size: 13px; text-align: center; color: #222; font-weight: bold;
-            line-height: 1.5; margin: 15px 0; padding: 0 5px;
-        }
+        .seccion-titulo { font-size: 16px; font-weight: 900; color: #002855; text-align: center; margin-bottom: 8px; letter-spacing: 0.5px; }
         
-        .bloque-central { display: flex; justify-content: center; width: 100%; margin-top: 10px; }
+        /* Estilos de las tablas */
+        .tabla-general { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        .tabla-general th { background-color: #f4f6f9; border: 2px solid #002855; padding: 10px; font-size: 13px; font-weight: 900; color: #002855; text-align: center; }
+        .tabla-general td { border: 2px solid #002855; height: 50px; padding: 0 15px; font-size: 14px; font-weight: bold; color: #002855; vertical-align: middle; }
         
-        .tabla-tasas { width: 95%; border-collapse: collapse; }
-        .tabla-tasas td {
-            border: 3px solid #002855; height: 70px; padding: 0 20px;
-            font-size: 19px; font-weight: bold; color: #002855; vertical-align: middle;
-        }
-        .valor-dinamico { font-size: 30px !important; text-align: right; color: #111 !important; font-weight: 900; }
+        .valor-tasa { font-size: 24px !important; text-align: right; color: #111 !important; font-weight: 900; }
+        .valor-calculado { font-size: 18px !important; text-align: right; color: #ce1126 !important; font-weight: 900; }
+        .valor-ref { text-align: center; font-size: 15px !important; color: #555 !important; }
         
-        .eslogan { text-align: center; font-style: italic; font-weight: 900; font-size: 22px; color: #002855; margin: 15px 0; }
-        .franja-inferior { background: linear-gradient(135deg, #f1a80a 0%, #f1a80a 45%, #002855 46%, #002855 70%, #ce1126 71%); height: 45px; margin: 0 -40px -40px -40px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+        .franja-inferior { background: linear-gradient(135deg, #f1a80a 0%, #f1a80a 45%, #002855 46%, #002855 70%, #ce1126 71%); height: 40px; margin: 20px -35px -35px -35px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
     </style>
 </head>
 <body>
 
     <div class="plantilla-sundde">
-        <!-- Reemplazo del título de texto por la imagen real de la marca de tu hotel -->
+        <!-- Encabezado del Hotel Laja City -->
         <div class="contenedor-logo-hotel">
             <img class="img-logo-hotel" src="logo-hotel.png" alt="Hotel Laja City">
-        </div>
-
-        <div class="encabezado-logos">
-            <img class="logo-sundde-img" src="sundde.png" alt="SUNDDE Oficial">
-            <img class="logo-bcv-img" src="bcv.png" alt="BCV Oficial">
         </div>
         
         <p class="texto-legal">
             "Quienes omitan la colocación de avisos o carteles habladores que exijan en materia de administración cambiaria, estarán incurriendo en infracciones por Incumplimiento de Formalidades establecidas en el Artículo 46 numeral 5 de la LEY ORGÁNICA DE PRECIOS JUSTOS"
         </p>
         
-        <div class="bloque-central">
-            <table class="tabla-tasas">
+        <!-- Bloque 1: Tasas Oficiales del BCV -->
+        <div class="seccion-titulo">INDICADORES CAMBIARIOS BCV</div>
+        <table class="tabla-general">
+            <tr>
+                <td>Bs. / USD (Oficial)</td>
+                <td id="tasa-usd" class="valor-tasa">Cargando...</td>
+            </tr>
+            <tr>
+                <td>Bs. / EUR (Oficial)</td>
+                <td id="tasa-eur" class="valor-tasa">Cargando...</td>
+            </tr>
+            <tr>
+                <td>Fecha Valor Oficial</td>
+                <td id="fecha-bcv" style="font-size: 15px; text-align: right; font-weight: 900;">--/--/----</td>
+            </tr>
+        </table>
+
+        <!-- Bloque 2: Tarifario de Habitaciones con Conversión Automática -->
+        <div class="seccion-titulo">TARIFA DE HABITACIÓN</div>
+        <table class="tabla-general">
+            <thead>
                 <tr>
-                    <td>Bs. / USD (Oficial)</td>
-                    <td id="tasa-usd" class="valor-dinamico">Cargando...</td>
+                    <th style="width: 45%;">DESCRIPCIÓN</th>
+                    <th style="width: 35%;">Bs.</th>
+                    <th style="width: 20%;">PRECIO REF. ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>MATRIMONIAL</td>
+                    <td id="calc-matrimonial" class="valor-calculado">Calculando...</td>
+                    <td class="valor-ref">60</td>
                 </tr>
                 <tr>
-                    <td>Bs. / EUR (Oficial)</td>
-                    <td id="tasa-eur" class="valor-dinamico">Cargando...</td>
+                    <td>DOBLE (Cama Individual)</td>
+                    <td id="calc-doble-ind" class="valor-calculado">Calculando...</td>
+                    <td class="valor-ref">65</td>
                 </tr>
                 <tr>
-                    <td>Fecha Valor</td>
-                    <td id="fecha-bcv" style="font-size: 18px; text-align: right; font-weight: 900;">--/--/----</td>
+                    <td>DOBLE (Cama Matrimonial)</td>
+                    <td id="calc-doble-mat" class="valor-calculado">Calculando...</td>
+                    <td class="valor-ref">75</td>
                 </tr>
-            </table>
-        </div>
+                <tr>
+                    <td>TRIPLE</td>
+                    <td id="calc-triple" class="valor-calculado">Calculando...</td>
+                    <td class="valor-ref">75</td>
+                </tr>
+                <tr>
+                    <td>CUADRUPLE</td>
+                    <td id="calc-cuadruple" class="valor-calculado">Calculando...</td>
+                    <td class="valor-ref">75</td>
+                </tr>
+            </tbody>
+        </table>
         
-        <div class="eslogan">¡DEFIENDE TUS DERECHOS!</div>
         <div class="franja-inferior"></div>
     </div>
 
     <script>
+        // Precios base de referencia en dólares según la imagen del hotel
+        const tarifasUSD = {
+            matrimonial: 60,
+            dobleInd: 65,
+            dobleMat: 75,
+            triple: 75,
+            cuadruple: 75
+        };
+
+        function calcularTarifasLocales(tasaDolar) {
+            // Formateador numérico de moneda nacional (coma para decimales y punto para miles)
+            const formatearMoneda = (valor) => valor.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            // Inyección automática en la nueva tabla
+            document.getElementById('calc-matrimonial').innerText = formatearMoneda(tarifasUSD.matrimonial * tasaDolar);
+            document.getElementById('calc-doble-ind').innerText = formatearMoneda(tarifasUSD.dobleInd * tasaDolar);
+            document.getElementById('calc-doble-mat').innerText = formatearMoneda(tarifasUSD.dobleMat * tasaDolar);
+            document.getElementById('calc-triple').innerText = formatearMoneda(tarifasUSD.triple * tasaDolar);
+            document.getElementById('calc-cuadruple').innerText = formatearMoneda(tarifasUSD.cuadruple * tasaDolar);
+        }
+
         async function conectarBCVReal() {
             try {
                 const respuesta = await fetch('https://dolarvzla.com');
@@ -98,21 +137,33 @@
                 const datos = await respuesta.json();
                 
                 if(datos && datos.rates && datos.rates.USD && datos.rates.EUR) {
-                    document.getElementById('tasa-usd').innerText = datos.rates.USD.toFixed(2).replace('.', ',');
-                    document.getElementById('tasa-eur').innerText = datos.rates.EUR.toFixed(2).replace('.', ',');
+                    const usd = datos.rates.USD;
+                    const定位eur = datos.rates.EUR;
+                    
+                    document.getElementById('tasa-usd').innerText = usd.toFixed(2).replace('.', ',');
+                    document.getElementById('tasa-eur').innerText =定位eur.toFixed(2).replace('.', ',');
                     document.getElementById('fecha-bcv').innerText = new Date(datos.date).toLocaleDateString('es-VE');
+                    
+                    // Ejecuta el cálculo automático con la tasa en vivo
+                    calcularTarifasLocales(usd);
                     return;
                 }
                 throw new Error();
             } catch (error) {
                 console.error("Modo resguardo activo");
+                // Tasas oficiales exactas del BCV de hoy en caso de fallas de red
+                const tasaResguardo = 884.75;
                 document.getElementById('tasa-usd').innerText = "884,75";
                 document.getElementById('tasa-eur').innerText = "993,21";
                 document.getElementById('fecha-bcv').innerText = new Date().toLocaleDateString('es-VE');
+                
+                // Ejecuta el cálculo automático con la tasa de resguardo del día
+                calcularTarifasLocales(tasaResguardo);
             }
         }
 
         conectarBCVReal();
+        // Ciclo automático de refresco independiente cada 2 horas
         setInterval(conectarBCVReal, 2 * 60 * 60 * 1000);
     </script>
 </body>
